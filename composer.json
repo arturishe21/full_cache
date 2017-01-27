@@ -1,0 +1,15 @@
+{
+  "name": "vis/full_cache",
+  "description": "Full cache response for L5",
+  "authors": [
+    {
+      "name": "vis",
+      "email": "artur@vis-design.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Vis\\FullCache\\": "src/"
+    }
+  }
+}
