@@ -11,16 +11,16 @@ composer update
 
 Добавляем в app.php в массив providers
 ```php
-  Vis\Compare\CompareServiceProvider::class,
+  Vis\FullCache\FullCacheServiceProvider::class,
 ```
 
-Использование
-сверху
+Добавляем в Kernel.php в $middlewareGroups в массив web
 ```php
-    use Vis\Compare\Facades\Compare;
+  \Vis\FullCache\Middlewares\FullCacheMiddleware::class,
 ```
 
-методы:
+Публикуем конфиг
 ```php
-
+  php artisan vendor:publish --tag=config_full_cache
 ```
+
