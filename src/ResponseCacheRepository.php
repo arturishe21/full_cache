@@ -14,38 +14,33 @@ class ResponseCacheRepository
     protected $cache;
 
     /**
-     * @var \Spatie\ResponseCache\ResponseSerializer
+     * @var \Vis\FullCache\ResponseSerializer
      */
     protected $responseSerializer;
 
     /**
      * @var string
      */
-    protected $cacheStoreName;
+    protected $cacheTags = ['settings', 'translations'];
 
     /**
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     * @param \Spatie\ResponseCache\ResponseSerializer     $responseSerializer
+     *
+     * @param \Vis\FullCache\ResponseSerializer     $responseSerializer
      */
     public function __construct(ResponseSerializer $responseSerializer)
     {
-
+        $this->cacheTags = array_merge($this->cacheTags, config('full_cache.tagsCache'));
         $this->responseSerializer = $responseSerializer;
     }
 
     /**
      * @param string                                     $key
      * @param \Symfony\Component\HttpFoundation\Response $response
-     * @param \DateTime|int                              $minutes
+     *
      */
     public function put($key, $response)
     {
-   /*
-        Cache::forever($key, $this->responseSerializer->serialize($response));
-*/
-
-        Cache::tags(config('full_cache.tagsCache'))->put($key, $this->responseSerializer->serialize($response), 100);
-
+         Cache::tags($this->cacheTags)->forever($key, $this->responseSerializer->serialize($response));
     }
 
     /**
@@ -55,7 +50,7 @@ class ResponseCacheRepository
      */
     public function has($key)
     {
-        return Cache::tags(config('full_cache.tagsCache'))->has($key);
+        return Cache::tags($this->cacheTags)->has($key);
     }
 
     /**
@@ -65,7 +60,7 @@ class ResponseCacheRepository
      */
     public function get($key)
     {
-        return $this->responseSerializer->unserialize(Cache::tags(config('full_cache.tagsCache'))->get($key));
+        return $this->responseSerializer->unserialize(Cache::tags($this->cacheTags)->get($key));
     }
 
 }
