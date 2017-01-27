@@ -14,7 +14,7 @@ class FullCacheServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/full_cache.php' => config_path('full_cache.php'),
+            __DIR__.'/config/full_cache.php' => config_path('full_cache.php'),
         ], 'config_full_cache');
     }
 
