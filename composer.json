@@ -1,6 +1,7 @@
 {
   "name": "vis/full_cache",
   "description": "Full cache response for L5",
+  "license": "MIT",
   "authors": [
     {
       "name": "vis",

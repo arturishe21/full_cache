@@ -2,7 +2,6 @@
 
 namespace Vis\FullCache;
 
-use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
 class FullCacheServiceProvider extends ServiceProvider

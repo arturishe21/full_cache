@@ -2,8 +2,6 @@
 
 namespace Vis\FullCache;
 
-use Illuminate\Contracts\Config\Repository as Repository;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Cache;
 
 class ResponseCacheRepository

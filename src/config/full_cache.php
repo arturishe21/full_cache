@@ -3,7 +3,7 @@
 return [
 
     /* switch enabled */
-    'enabled' => true,
+    'enabled' => false,
 
     /* list urls that will NOT be cached */
     'notWillCacheUrl' => ['admin', 'login'],

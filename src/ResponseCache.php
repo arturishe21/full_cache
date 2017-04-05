@@ -53,7 +53,7 @@ class ResponseCache
         return $this->cache->get($this->hasher->getHashFor($request));
     }
 
-    private function accessCache($request)
+    private function accessCache(Request $request)
     {
         if (!config('full_cache.enabled')) {
             return false;

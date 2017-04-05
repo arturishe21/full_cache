@@ -4,8 +4,6 @@ namespace Vis\FullCache;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as Request2;
-use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
-use Illuminate\Support\Facades\Session;
 
 class RequestHasher
 {
@@ -37,7 +35,7 @@ class RequestHasher
         return Request2::ajax() ? 'ajax' : 'no_ajax';
     }
     
-    private function getSessionSerialize($request)
+    private function getSessionSerialize(Request $request)
     {
         $sessionsAll[] = $request->session()->get(config('cartalyst.sentinel.session'));
 
@@ -50,7 +48,7 @@ class RequestHasher
         return serialize($sessionsAll);
     }
 
-    private function getCookiesSerialize($request)
+    private function getCookiesSerialize(Request $request)
     {
         $cookiesAll[] = $request->cookie('skin');
 
